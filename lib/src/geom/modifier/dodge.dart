@@ -52,15 +52,15 @@ class DodgeGeomModifier extends GeomModifier {
   final bool symmetric;
 
   /// The band for each discrete x value.
-  /// 
+  ///
   /// It is a ratio to the total coordinate width.
   final double band;
 
   @override
   void modify(AesGroups value) {
     final bias = ratio * band;
-    // If symmetric, negtively shifts half of the total bias.
-    var accumulated = symmetric ? -bias * (value.length - 1) / 2 : 0.0;
+    // If symmetric, negatively shifts half of the total bias.
+    var accumulated = symmetric ? -bias * (value.length + 1) / 2 : 0.0;
 
     for (var group in value) {
       for (var aes in group) {
